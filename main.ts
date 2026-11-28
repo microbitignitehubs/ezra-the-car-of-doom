@@ -26,40 +26,32 @@ radio.setTransmitSerialNumber(false)
 is_controller = 0
 command_stop = 0
 basic.forever(function () {
-    basic.pause(100)
-})
-basic.forever(function () {
-    basic.pause(100)
-    if (is_controller) {
-        roll = input.rotation(Rotation.Roll)
-    }
-    if (roll < 1) {
-        basic.showArrow(ArrowNames.West)
-    } else {
-    	
-    }
-})
-basic.forever(function () {
     if (is_controller) {
         command = command_stop
-        roll = input.rotation(Rotation.Roll)
-        if (roll > 1) {
-            let is_controller2 = 0
+        if (roll > 45) {
+            let TURN_LEFT = 0
             basic.showArrow(ArrowNames.East)
-            command = is_controller2
-        } else if (roll < -1) {
+            command = TURN_LEFT
+        } else if (roll < -45) {
+            let TURN_RIGHT = 0
             basic.showArrow(ArrowNames.West)
-        } else if (false) {
+            command = TURN_RIGHT
             basic.showIcon(IconNames.SmallDiamond)
         } else {
             radio.sendNumber(command)
         }
+        roll = input.rotation(Rotation.Roll)
     }
 })
 basic.forever(function () {
+    let is_controller2 = 0
     basic.pause(100)
-    if (is_controller) {
-        command = command_stop
+    if (is_controller2) {
+        roll = input.rotation(Rotation.Roll)
+        if (roll) {
+        	
+        } else {
+        	
+        }
     }
-    radio.sendNumber(command)
 })
